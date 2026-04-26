@@ -2,11 +2,11 @@
 
 ## Repository Name
 
-`creator-community-chat`
+`ecommerce-seller-chat`
 
 ## About
 
-Full-stack creator community app built with Tencent RTC Chat SDK for channels, direct messages, member roles, moderation, and optional paid membership.
+Full-stack ecommerce app built with Tencent RTC Chat SDK for product chat, order threads, seller ops, and Stripe-ready checkout.
 
 ## Website
 
@@ -15,36 +15,36 @@ Full-stack creator community app built with Tencent RTC Chat SDK for channels, d
 ## Topics
 
 ```text
-creator-community
-community-platform
-social-chat
-membership
-paid-community
+ecommerce
+seller-chat
+marketplace
+stripe
 chat-sdk
 tencent-rtc
 nextjs
 typescript
-moderation
+order-chat
+full-stack
 ```
 
 ## Search Intent
 
 Primary:
 
-- `creator community chat`
-- `nextjs community platform`
-- `creator fan community`
-- `membership community app`
+- `ecommerce seller chat`
+- `nextjs ecommerce app`
+- `marketplace chat nextjs`
+- `stripe ecommerce nextjs`
 
 Secondary:
 
-- `discord clone nextjs`
-- `paid community platform`
-- `creator membership app`
-- `social chat app nextjs`
+- `product chat ecommerce`
+- `order chat app`
+- `buyer seller chat`
+- `full stack ecommerce nextjs`
 
 ## Positioning Guardrail
 
-Do not describe this as a generic chat demo. The public story is:
+Do not describe this as only a storefront or only a chat demo. The public story is:
 
-> Tencent RTC Chat SDK is the messaging foundation for a real creator community product with channels, DMs, moderation, and paid-room continuity.
+> Tencent RTC Chat SDK keeps buyer-seller product chat, payment updates, and post-purchase order support in one persistent commerce workflow.

@@ -1,95 +1,102 @@
-export type Role = "creator" | "moderator" | "member" | "guest";
+export type CommerceRole = "buyer" | "seller" | "ops";
 
-export type MembershipStatus = "active" | "trial" | "gated";
+export type AccountStatus = "signed-up" | "verified";
 
-export type TierKey = "free" | "backstage" | "inner-circle";
+export type ThreadStage = "pre-sale" | "payment-pending" | "paid" | "shipped";
 
-export type ChannelKind = "announcement" | "chat" | "premium";
+export type PaymentProvider = "mock" | "stripe";
 
-export type ModerationStatus = "open" | "reviewing" | "resolved";
+export type PaymentStatus = "pending" | "paid";
 
-export type CommunityMessageAuthor = "creator" | "moderator" | "member" | "system";
+export type CommerceMessageAuthor = "buyer" | "seller" | "ops" | "system";
 
-export type CommunityMessage = {
+export type CommerceMessage = {
   id: string;
-  author: CommunityMessageAuthor;
+  author: CommerceMessageAuthor;
   name: string;
   time: string;
   body: string;
 };
 
-export type CommunityMember = {
+export type CommerceUser = {
   id: string;
   name: string;
   handle: string;
-  role: Role;
-  status: MembershipStatus;
-  tier: TierKey;
+  role: CommerceRole;
+  status: AccountStatus;
   bio: string;
   unreadCount: number;
 };
 
-export type MembershipTier = {
-  id: TierKey;
-  name: string;
-  priceLabel: string;
-  description: string;
-  perks: string[];
-};
-
-export type CommunityChannel = {
-  id: string;
-  name: string;
-  kind: ChannelKind;
-  access: TierKey;
-  topic: string;
-  unreadCount: number;
-  messages: CommunityMessage[];
-};
-
-export type DirectThread = {
+export type Product = {
   id: string;
   title: string;
-  participants: string[];
-  unreadCount: number;
-  messages: CommunityMessage[];
-};
-
-export type ModerationReport = {
-  id: string;
-  reason: string;
-  status: ModerationStatus;
-  reporter: string;
-  target: string;
-};
-
-export type CommunityWorkspace = {
-  communityId: string;
-  name: string;
-  slug: string;
   category: string;
-  creatorName: string;
+  price: number;
+  inventory: number;
+  sellerId: string;
+  summary: string;
+  unreadCount: number;
+};
+
+export type CartLine = {
+  id: string;
+  productId: string;
+  title: string;
+  quantity: number;
+  unitPrice: number;
+};
+
+export type Order = {
+  id: string;
+  productId: string;
+  buyerId: string;
+  sellerId: string;
+  stage: ThreadStage;
+  paymentProvider: PaymentProvider;
+  paymentStatus: PaymentStatus;
+  amount: number;
+  note: string;
+};
+
+export type SellerThread = {
+  id: string;
+  title: string;
+  productId: string;
+  orderId?: string;
+  stage: ThreadStage;
+  unreadCount: number;
+  messages: CommerceMessage[];
+};
+
+export type EcommerceWorkspace = {
+  storeId: string;
+  storeName: string;
+  category: string;
+  sellerName: string;
   coverTagline: string;
   heroPitch: string;
-  nextDrop: string;
-  activeMembers: number;
-  onlineNow: number;
-  members: CommunityMember[];
-  membershipTiers: MembershipTier[];
-  channels: CommunityChannel[];
-  directThreads: DirectThread[];
-  reports: ModerationReport[];
+  nextShipment: string;
+  gmv: number;
+  users: CommerceUser[];
+  products: Product[];
+  cart: CartLine[];
+  threads: SellerThread[];
+  orders: Order[];
+  sellerChecklist: string[];
 };
 
-export type CommunityAssistantReply = {
+export type CommerceAssistantReply = {
   summary: string;
-  announcement: string;
-  moderationAction: string;
+  sellerReply: string;
+  opsAction: string;
 };
 
-export type MembershipUpgradeReply = {
-  tier: TierKey;
-  status: MembershipStatus;
-  unlockedChannelIds: string[];
+export type CheckoutReply = {
+  orderId: string;
+  stage: ThreadStage;
+  paymentProvider: PaymentProvider;
+  paymentStatus: PaymentStatus;
+  amount: number;
   confirmation: string;
 };

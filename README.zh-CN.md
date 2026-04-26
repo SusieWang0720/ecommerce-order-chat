@@ -1,38 +1,38 @@
-# Creator Community Chat
+# Ecommerce Seller Chat
 
-构建一个完整的创作者社区应用：注册登录、频道聊天、创作者私信、审核后台，以及可选的付费会员。
+构建一个完整电商应用：买家注册、商品详情、卖家聊天、支付路径，以及支付后继续沿用同一条订单线程。
 
-这个项目是一个基于 **Tencent RTC Chat SDK** 的 Next.js 全栈 starter，适合创作者社群、粉丝社区、会员社区、兴趣社群等场景。它展示注册后的成员身份、公共频道、创作者公告、私信线程、审核流程，以及升级会员后仍然保持同一条会话历史。
+这个项目是一个基于 **Tencent RTC Chat SDK** 的 Next.js 全栈 starter，适合电商、独立卖家、精品商店、平台型 marketplace 等场景。它展示买家身份、商品咨询、卖家回复、支付确认、订单跟进，以及售后消息都在同一条持续会话里完成。
 
 本项目面向 **Tencent RTC Chat 永久免费能力** 构建。先看永久免费入口：[trtc.io/free-chat-api](https://trtc.io/free-chat-api)，然后到 [TRTC Console](https://console.trtc.io) 获取 `SDKAppID`。
 
 ## 这个项目解决什么问题
 
-很多社交聊天 demo 只有一个聊天室，但真实社区产品还需要：
+很多电商 demo 只展示商品页和 checkout，但真实电商产品还需要：
 
-- 注册登录后的长期成员身份
-- 公共频道和创作者公告
-- 创作者与成员之间的私信
-- 举报、审核、成员权限管理
-- 会员升级后不丢失原来的聊天线程
+- 买家注册后的长期身份
+- 商品详情页上的买卖双方聊天
+- 支付前咨询与支付后订单跟进保持连续
+- 卖家在同一条线程里发送发货和售后更新
+- 订单、支付、物流与会话映射到同一个业务对象
 - Tencent RTC Chat SDK 作为真正的持久消息层
 
-这个 repo 的目标是让开发者看到一个完整社交产品的骨架，而不是一个空白 chat UI。
+这个 repo 的目标是让开发者看到一个真实电商聊天产品，而不是一个孤立 storefront，也不是一个孤立 chat widget。
 
 ## Tencent RTC Chat SDK 在这里做什么
 
-社区平台本身决定谁能加入、哪个会员等级能进入哪个房间。**Tencent RTC Chat SDK 承载真正的消息层。**
+商品、支付、订单本身属于电商业务层。**Tencent RTC Chat SDK 承载买家和卖家的会话层。**
 
 它在这个项目里负责：
 
-- 社区频道消息
-- 创作者与成员私信
-- 持久线程历史
+- 商品咨询线程
+- 支付前后的持久历史
 - 未读状态与再次进入体验
-- 会员升级后的 premium room 会话连续性
+- 订单发货和售后在同一线程里的连续性
+- 卖家运营与订单会话映射
 - 通过服务端签发 `UserSig` 的生产接入路径
 
-如果只是一个普通社区网站，不一定需要 chat SDK；当它变成有角色、有频道、有私信、有历史的实时社交产品时，Tencent RTC Chat SDK 就变得关键。
+如果只是一个简单商品站，不一定需要 chat SDK；当商品咨询、支付状态、订单跟进成为连续工作流时，Tencent RTC Chat SDK 就很关键。
 
 ## 快速运行
 
@@ -59,20 +59,24 @@ npm run dev
 NEXT_PUBLIC_CHAT_MODE=tencent
 NEXT_PUBLIC_TENCENT_SDK_APP_ID=your_sdk_app_id
 TENCENT_SDK_SECRET_KEY=your_server_only_secret_key
-NEXT_PUBLIC_CREATOR_USER_ID=creator_nova
-NEXT_PUBLIC_DEFAULT_MEMBER_USER_ID=member-alina
+NEXT_PUBLIC_SELLER_USER_ID=seller_mira
+NEXT_PUBLIC_DEFAULT_BUYER_USER_ID=buyer-lena
 ```
 
 项目通过 `/api/usersig` 在服务端签发 `UserSig`，不要把 `SDKSecretKey` 放到前端。
+
+## Stripe 要不要保留
+
+要保留。
+
+这里更合理的做法不是把 repo 名字写成 checkout，而是在产品能力里保留 `Stripe-ready`：
+
+- 本地默认用 mock checkout，方便零门槛演示
+- 真正生产接入时，推荐替换成 Stripe checkout session 或 payment intent
+- Tencent RTC Chat SDK 继续负责支付前后的会话连续性
 
 ## AI API 是否必须
 
 不必须。
 
-如果不配置 `AI_API_KEY`，项目会使用内置 deterministic community assistant，方便开发者立即跑通。需要真实模型输出时，可以配置任意 OpenAI-compatible provider。
-
-## 付费系统是否必须
-
-也不必须。
-
-这个 starter 内置的是 mock membership upgrade 流程，所以本地无须 Stripe 就能演示“会员升级后解锁 premium room”。如果后续要接真实支付，可以把 `/api/membership` 换成你自己的 Stripe 或订阅后端。
+如果不配置 `AI_API_KEY`，项目会使用内置 deterministic seller assistant，方便开发者立即跑通。需要真实模型输出时，可以配置任意 OpenAI-compatible provider。

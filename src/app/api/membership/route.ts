@@ -1,34 +1,37 @@
 import { NextResponse } from "next/server";
-import type { MembershipUpgradeReply, TierKey } from "@/lib/types";
+import type { CheckoutReply, PaymentProvider } from "@/lib/types";
 
-type MembershipRequest = {
-  tier?: TierKey;
-  memberName?: string;
-  community?: string;
-};
-
-const unlockedByTier: Record<TierKey, string[]> = {
-  free: [],
-  backstage: ["channel-backstage"],
-  "inner-circle": ["channel-backstage"],
+type CheckoutRequest = {
+  productId?: string;
+  productTitle?: string;
+  amount?: number;
+  paymentProvider?: PaymentProvider;
+  buyerName?: string;
 };
 
 export async function POST(request: Request) {
-  const { tier, memberName = "Member", community = "community" }: MembershipRequest =
-    await request.json().catch(() => ({}));
+  const {
+    productId = "product",
+    productTitle = "product",
+    amount = 0,
+    paymentProvider = "mock",
+    buyerName = "Buyer",
+  }: CheckoutRequest = await request.json().catch(() => ({}));
 
-  if (!tier || !(tier in unlockedByTier)) {
-    return NextResponse.json({ error: "Missing or invalid tier" }, { status: 400 });
+  if (!productId || !amount) {
+    return NextResponse.json({ error: "Missing product or amount" }, { status: 400 });
   }
 
-  const response: MembershipUpgradeReply = {
-    tier,
-    status: "active",
-    unlockedChannelIds: unlockedByTier[tier],
-    confirmation:
-      tier === "free"
-        ? `${memberName} stays on the free tier in ${community}. Public rooms remain available.`
-        : `${memberName} upgraded to ${tier.replace("-", " ")} in ${community}. Premium rooms can now continue in the same Tencent RTC Chat SDK thread history.`,
+  const paid = paymentProvider === "stripe";
+  const response: CheckoutReply = {
+    orderId: `order-${Date.now()}`,
+    stage: paid ? "paid" : "payment-pending",
+    paymentProvider,
+    paymentStatus: paid ? "paid" : "pending",
+    amount,
+    confirmation: paid
+      ? `${buyerName} completed Stripe payment for ${productTitle}. Keep shipping and support updates in the same order thread.`
+      : `${buyerName} started a mock checkout for ${productTitle}. The order thread stays open while payment is pending.`,
   };
 
   return NextResponse.json(response);

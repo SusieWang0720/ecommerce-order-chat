@@ -1,5 +1,5 @@
-import { CreatorCommunityChatApp } from "@/components/creator-community-chat-app";
+import { EcommerceSellerChatApp } from "@/components/ecommerce-seller-chat-app";
 
 export default function Home() {
-  return <CreatorCommunityChatApp />;
+  return <EcommerceSellerChatApp />;
 }

@@ -1,51 +1,51 @@
-# Creator Community Chat
+# Ecommerce Seller Chat
 
-Build a full-stack creator community app with sign-up, channels, direct messages, moderation, and optional paid membership.
+Build a full-stack ecommerce app where product questions, checkout, and post-purchase support stay in the same thread.
 
-This is a full-stack Next.js starter built on **Tencent RTC Chat SDK** for teams building creator or fan communities that need real member identity, persistent channel history, unread state, creator-member DMs, moderator workflows, and premium room access.
+This is a full-stack Next.js starter built on **Tencent RTC Chat SDK** for teams building real ecommerce products with buyer sign-up, product catalog, seller chat, order continuity, unread follow-up, seller ops, and a Stripe-ready payment path.
 
 Built for **Tencent RTC Chat, free forever**. Start here: [trtc.io/free-chat-api](https://trtc.io/free-chat-api), then use the [TRTC Console](https://console.trtc.io) to get your `SDKAppID`.
 
-![Creator Community Chat preview](./public/preview.svg)
+![Ecommerce Seller Chat preview](./public/preview.svg)
 
 ## Why Use This
 
-Most social chat demos stop at a generic room list. Real community products need more:
+Most ecommerce demos stop at product pages and checkout. Real commerce products need more:
 
-- sign-up and persistent member identity
-- public channels and creator announcements
-- direct messages between creators and members
-- moderator workflows for reports and gated access
-- optional paid membership without breaking the thread
-- Tencent RTC Chat SDK as the durable messaging layer underneath all of it
+- buyer sign-up and persistent account identity
+- product-level chat before payment
+- seller replies in the same thread as the product conversation
+- payment confirmation that does not break the conversation
+- post-purchase order updates, shipping, and support in the same thread
+- Tencent RTC Chat SDK as the durable messaging layer underneath the commerce flow
 
-This repo is designed to feel like a real product, not a blank chat window.
+This repo is designed to feel like a real commerce product, not a generic storefront and not a generic chat demo.
 
 ## What Tencent RTC Chat SDK Does Here
 
-The creator platform decides who can join and which tier is unlocked. **Tencent RTC Chat SDK owns the conversation layer.**
+The storefront, payment system, and order logic are commerce layers. **Tencent RTC Chat SDK owns the buyer-seller conversation layer.**
 
 In this project, Tencent RTC Chat SDK is the messaging foundation for:
 
-- community channels
-- creator-member direct messages
-- persistent thread history
+- pre-sale buyer-seller product chat
+- persistent product and order thread history
 - unread state and revisit flow
-- premium room continuity after membership upgrade
+- post-purchase tracking and support continuity
+- seller ops handoff without moving the buyer to another channel
 - secure production login through backend-issued `UserSig`
 
-A simple community website can work without a chat SDK. You need Tencent RTC Chat SDK when the product becomes a real-time social app with roles, rooms, threads, and follow-up.
+A simple ecommerce site can work without a chat SDK. You need Tencent RTC Chat SDK when product questions, payment state, and order follow-up become part of one ongoing workflow.
 
 ## Demo Scenario
 
-A new member joins a creator community called `Midnight Radio Club`.
+A buyer wants to order a product from an independent seller.
 
-1. The member signs in and completes profile onboarding.
-2. The member joins public channels and sees creator announcements.
-3. The member opens a DM thread with the creator team.
-4. A premium backstage room stays locked until membership is upgraded.
-5. After upgrade, the same community identity and thread history continue inside the premium room.
-6. A moderator reviews flagged posts without leaving the community workspace.
+1. The buyer signs up and opens a product thread.
+2. The buyer asks about inventory, finish, and delivery timing.
+3. The seller replies in the same thread.
+4. The buyer starts checkout with `mock` mode or `Stripe` mode.
+5. The thread continues after payment as an order conversation.
+6. Tracking, shipping, and post-purchase updates stay in the same Tencent RTC Chat SDK thread.
 
 ## Quick Start
 
@@ -72,17 +72,28 @@ The default mode is mock mode, so the app runs without Tencent RTC Chat SDK cred
 NEXT_PUBLIC_CHAT_MODE=tencent
 NEXT_PUBLIC_TENCENT_SDK_APP_ID=your_sdk_app_id
 TENCENT_SDK_SECRET_KEY=your_server_only_secret_key
-NEXT_PUBLIC_CREATOR_USER_ID=creator_nova
-NEXT_PUBLIC_DEFAULT_MEMBER_USER_ID=member-alina
+NEXT_PUBLIC_SELLER_USER_ID=seller_mira
+NEXT_PUBLIC_DEFAULT_BUYER_USER_ID=buyer-lena
 ```
 
 This project issues `UserSig` from `/api/usersig`. Do not put `SDKSecretKey` in frontend code.
+
+## Stripe Or Mock Checkout
+
+Stripe should stay in the story.
+
+This repo includes:
+
+- `mock` checkout for instant local demo with no external billing setup
+- `Stripe-ready` positioning for the real payment path developers will expect in production
+
+The current `/api/membership` route is demo checkout scaffolding. Replace it with your Stripe checkout session or payment intent flow while keeping Tencent RTC Chat SDK as the messaging layer before and after payment.
 
 ## AI Provider
 
 An AI API key is optional.
 
-Without `AI_API_KEY`, the project uses a deterministic community assistant so developers can run it immediately. If you want live model output, set any OpenAI-compatible provider:
+Without `AI_API_KEY`, the project uses a deterministic seller assistant so developers can run it immediately. If you want live model output, set any OpenAI-compatible provider:
 
 ```bash
 AI_API_KEY=your_key
@@ -92,25 +103,19 @@ AI_MODEL=gpt-4o-mini
 
 You can swap OpenAI for another OpenAI-compatible model provider by changing `AI_BASE_URL`, `AI_API_KEY`, and `AI_MODEL`.
 
-## Membership Billing
-
-Payments are optional.
-
-This starter includes a mocked membership upgrade flow so the product works locally without Stripe. If you want real billing, replace `/api/membership` with your own Stripe or subscription backend and keep Tencent RTC Chat SDK as the messaging layer around the upgrade flow.
-
 ## Tech Stack
 
 - Next.js App Router
 - Tencent RTC Chat SDK via `@tencentcloud/chat`
 - Backend `UserSig` route with `tls-sig-api-v2`
 - Optional OpenAI-compatible AI provider
-- Mock community members, channels, DMs, moderation, and paid membership workflow
+- Mock catalog, seller chat, checkout, orders, and seller ops workflow
 
 ## Repository Topics
 
 Suggested GitHub topics:
 
-`creator-community`, `community-platform`, `social-chat`, `membership`, `paid-community`, `chat-sdk`, `tencent-rtc`, `nextjs`, `typescript`, `moderation`
+`ecommerce`, `seller-chat`, `marketplace`, `stripe`, `chat-sdk`, `tencent-rtc`, `nextjs`, `typescript`, `order-chat`, `full-stack`
 
 ## Links
 
