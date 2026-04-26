@@ -1,12 +1,12 @@
-# Ecommerce Seller Chat
+# Ecommerce Order Chat
 
 Build a full-stack ecommerce app where product questions, checkout, and post-purchase support stay in the same thread.
 
-This is a full-stack Next.js starter built on **Tencent RTC Chat SDK** for teams building real ecommerce products with buyer sign-up, product catalog, seller chat, order continuity, unread follow-up, seller ops, and a Stripe-ready payment path.
+This is a full-stack Next.js starter built on **Tencent RTC Chat SDK** for teams building real ecommerce products with buyer sign-up, product catalog, order chat, order continuity, unread follow-up, order ops, and a Stripe-ready payment path.
 
 Built for **Tencent RTC Chat, free forever**. Start here: [trtc.io/free-chat-api](https://trtc.io/free-chat-api), then use the [TRTC Console](https://console.trtc.io) to get your `SDKAppID`.
 
-![Ecommerce Seller Chat preview](./public/preview.svg)
+![Ecommerce Order Chat preview](./public/preview.svg)
 
 ## Why Use This
 
@@ -23,7 +23,7 @@ This repo is designed to feel like a real commerce product, not a generic storef
 
 ## What Tencent RTC Chat SDK Does Here
 
-The storefront, payment system, and order logic are commerce layers. **Tencent RTC Chat SDK owns the buyer-seller conversation layer.**
+The storefront, payment system, and order logic are commerce layers. **Tencent RTC Chat SDK owns the buyer-seller order conversation layer.**
 
 In this project, Tencent RTC Chat SDK is the messaging foundation for:
 
@@ -31,7 +31,7 @@ In this project, Tencent RTC Chat SDK is the messaging foundation for:
 - persistent product and order thread history
 - unread state and revisit flow
 - post-purchase tracking and support continuity
-- seller ops handoff without moving the buyer to another channel
+- order ops handoff without moving the buyer to another channel
 - secure production login through backend-issued `UserSig`
 
 A simple ecommerce site can work without a chat SDK. You need Tencent RTC Chat SDK when product questions, payment state, and order follow-up become part of one ongoing workflow.
@@ -72,7 +72,7 @@ The default mode is mock mode, so the app runs without Tencent RTC Chat SDK cred
 NEXT_PUBLIC_CHAT_MODE=tencent
 NEXT_PUBLIC_TENCENT_SDK_APP_ID=your_sdk_app_id
 TENCENT_SDK_SECRET_KEY=your_server_only_secret_key
-NEXT_PUBLIC_SELLER_USER_ID=seller_mira
+NEXT_PUBLIC_STORE_SELLER_USER_ID=seller-mira
 NEXT_PUBLIC_DEFAULT_BUYER_USER_ID=buyer-lena
 ```
 
@@ -87,13 +87,13 @@ This repo includes:
 - `mock` checkout for instant local demo with no external billing setup
 - `Stripe-ready` positioning for the real payment path developers will expect in production
 
-The current `/api/membership` route is demo checkout scaffolding. Replace it with your Stripe checkout session or payment intent flow while keeping Tencent RTC Chat SDK as the messaging layer before and after payment.
+The current `/api/checkout` route is demo checkout scaffolding. Replace it with your Stripe checkout session or payment intent flow while keeping Tencent RTC Chat SDK as the messaging layer before and after payment.
 
 ## AI Provider
 
 An AI API key is optional.
 
-Without `AI_API_KEY`, the project uses a deterministic seller assistant so developers can run it immediately. If you want live model output, set any OpenAI-compatible provider:
+Without `AI_API_KEY`, the project uses a deterministic order assistant so developers can run it immediately. If you want live model output, set any OpenAI-compatible provider:
 
 ```bash
 AI_API_KEY=your_key
@@ -109,13 +109,13 @@ You can swap OpenAI for another OpenAI-compatible model provider by changing `AI
 - Tencent RTC Chat SDK via `@tencentcloud/chat`
 - Backend `UserSig` route with `tls-sig-api-v2`
 - Optional OpenAI-compatible AI provider
-- Mock catalog, seller chat, checkout, orders, and seller ops workflow
+- Mock catalog, order chat, checkout, orders, and order ops workflow
 
 ## Repository Topics
 
 Suggested GitHub topics:
 
-`ecommerce`, `seller-chat`, `marketplace`, `stripe`, `chat-sdk`, `tencent-rtc`, `nextjs`, `typescript`, `order-chat`, `full-stack`
+`ecommerce`, `order-chat`, `marketplace`, `stripe`, `chat-sdk`, `tencent-rtc`, `nextjs`, `typescript`, `full-stack`
 
 ## Links
 

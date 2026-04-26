@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { clsx } from "clsx";
 import { useState, useTransition } from "react";
-import { ecommerceSellerChatDemo } from "@/lib/demo-data";
+import { ecommerceOrderChatDemo } from "@/lib/demo-data";
 import { initTencentRtcChat } from "@/lib/tencent-rtc-chat";
 import type {
   CheckoutReply,
@@ -31,7 +31,7 @@ import type {
 
 const chatMode = process.env.NEXT_PUBLIC_CHAT_MODE || "mock";
 const sdkAppId = Number(process.env.NEXT_PUBLIC_TENCENT_SDK_APP_ID || 0);
-const sellerUserId = process.env.NEXT_PUBLIC_SELLER_USER_ID || "seller_mira";
+const sellerUserId = process.env.NEXT_PUBLIC_STORE_SELLER_USER_ID || "seller-mira";
 const defaultBuyerUserId = process.env.NEXT_PUBLIC_DEFAULT_BUYER_USER_ID || "buyer-lena";
 
 type SurfaceState = {
@@ -103,18 +103,18 @@ function addThreadMessage(
   );
 }
 
-export function EcommerceSellerChatApp() {
-  const [workspace, setWorkspace] = useState<EcommerceWorkspace>(ecommerceSellerChatDemo);
+export function EcommerceOrderChatApp() {
+  const [workspace, setWorkspace] = useState<EcommerceWorkspace>(ecommerceOrderChatDemo);
   const [viewerId] = useState(defaultBuyerUserId);
   const [surface, setSurface] = useState<SurfaceState>({
-    threadId: ecommerceSellerChatDemo.threads[0].id,
+    threadId: ecommerceOrderChatDemo.threads[0].id,
   });
-  const [selectedProductId, setSelectedProductId] = useState(ecommerceSellerChatDemo.products[0].id);
+  const [selectedProductId, setSelectedProductId] = useState(ecommerceOrderChatDemo.products[0].id);
   const [composer, setComposer] = useState(
     "I like this lamp. Can you confirm the charcoal shade and whether Stripe checkout is available?",
   );
   const [automationPrompt, setAutomationPrompt] = useState(
-    "Draft a seller reply that confirms inventory and keeps shipping updates in the order thread after payment.",
+    "Draft an order reply that confirms inventory and keeps shipping updates in the order thread after payment.",
   );
   const [sdkState, setSdkState] = useState(
     chatMode === "tencent" ? "Tencent mode ready to connect" : "Mock mode: no credentials required",
@@ -225,7 +225,7 @@ export function EcommerceSellerChatApp() {
       const payload = (await response.json()) as CommerceAssistantReply & { error?: string };
 
       if (!response.ok) {
-        setCheckoutNote(payload.error || "Seller assistant failed.");
+        setCheckoutNote(payload.error || "Order assistant failed.");
         return;
       }
 
@@ -255,7 +255,7 @@ export function EcommerceSellerChatApp() {
 
   function startCheckout() {
     startCheckoutTransition(async () => {
-      const response = await fetch("/api/membership", {
+      const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -334,8 +334,8 @@ export function EcommerceSellerChatApp() {
           </div>
           <h1>Ecommerce works better when product chat survives payment.</h1>
           <p>
-            Build a full-stack ecommerce app with buyer sign-up, product catalog, seller chat,
-            Stripe-ready checkout, order threads, and seller ops on top of Tencent RTC Chat SDK.
+            Build a full-stack ecommerce app with buyer sign-up, product catalog, product chat,
+            Stripe-ready checkout, and persistent order threads on top of Tencent RTC Chat SDK.
           </p>
           <div className="hero-actions">
             <button onClick={connectTencentChat} className="primary-action">
@@ -374,7 +374,7 @@ export function EcommerceSellerChatApp() {
         </div>
         <div>
           <strong>{workspace.threads.length}</strong>
-          <span>seller chat threads</span>
+          <span>active chat threads</span>
         </div>
       </section>
 
@@ -504,7 +504,7 @@ export function EcommerceSellerChatApp() {
         <aside className="operations-panel">
           <div className="panel-title">
             <Receipt size={18} />
-            Seller Ops
+            Order Ops
           </div>
 
           <div className="ops-card">
@@ -536,15 +536,15 @@ export function EcommerceSellerChatApp() {
           </div>
 
           <div className="ops-card">
-            <span>Seller assistant</span>
+            <span>Order assistant</span>
             <textarea
               value={automationPrompt}
               onChange={(event) => setAutomationPrompt(event.target.value)}
-              placeholder="Draft a seller reply or post-purchase ops action..."
+              placeholder="Draft an order reply or post-purchase ops action..."
             />
             <button onClick={runAssistant} className="primary-action full-width" disabled={isAssistantPending}>
               <Bot size={18} />
-              {isAssistantPending ? "Running assistant..." : "Run seller assistant"}
+              {isAssistantPending ? "Running assistant..." : "Run order assistant"}
             </button>
           </div>
 

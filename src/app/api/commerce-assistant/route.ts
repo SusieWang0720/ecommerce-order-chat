@@ -13,13 +13,13 @@ function fallbackAssistant(prompt: string, store: string, seller: string): Comme
   const shipping = /ship|tracking|delivery|dispatch/i.test(prompt);
 
   return {
-    summary: `Prepared a seller ops update for ${store}. Tencent RTC Chat SDK can keep pre-sale questions, payment updates, and post-purchase follow-up inside the same buyer-seller workflow.`,
+    summary: `Prepared an order-thread update for ${store}. Tencent RTC Chat SDK can keep pre-sale questions, payment updates, and post-purchase follow-up inside the same buyer-seller workflow.`,
     sellerReply: payment
       ? `${seller}: I can send the Stripe payment link in this thread and keep your order conversation open after payment clears.`
       : `${seller}: I can confirm inventory here and keep the order thread active for shipping updates after you place the order.`,
     opsAction: shipping
-      ? "Seller ops should post tracking and dispatch notes in the order thread instead of moving the buyer to email."
-      : "Seller ops should keep product questions, payment confirmation, and post-purchase follow-up attached to the same product or order thread.",
+      ? "Order ops should post tracking and dispatch notes in the order thread instead of moving the buyer to email."
+      : "Store ops should keep product questions, payment confirmation, and post-purchase follow-up attached to the same product or order thread.",
   };
 }
 
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       {
         role: "system",
         content:
-          "You are an ecommerce seller ops assistant. Return compact JSON with summary, sellerReply, and opsAction. Keep it grounded in buyer-seller chat, payment workflow, and post-purchase order continuity.",
+          "You are an ecommerce order assistant. Return compact JSON with summary, sellerReply, and opsAction. Keep it grounded in buyer-seller chat, payment workflow, and post-purchase order continuity.",
       },
       {
         role: "user",

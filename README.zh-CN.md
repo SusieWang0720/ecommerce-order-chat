@@ -1,4 +1,4 @@
-# Ecommerce Seller Chat
+# Ecommerce Order Chat
 
 构建一个完整电商应用：买家注册、商品详情、卖家聊天、支付路径，以及支付后继续沿用同一条订单线程。
 
@@ -59,7 +59,7 @@ npm run dev
 NEXT_PUBLIC_CHAT_MODE=tencent
 NEXT_PUBLIC_TENCENT_SDK_APP_ID=your_sdk_app_id
 TENCENT_SDK_SECRET_KEY=your_server_only_secret_key
-NEXT_PUBLIC_SELLER_USER_ID=seller_mira
+NEXT_PUBLIC_STORE_SELLER_USER_ID=seller-mira
 NEXT_PUBLIC_DEFAULT_BUYER_USER_ID=buyer-lena
 ```
 
@@ -79,4 +79,4 @@ NEXT_PUBLIC_DEFAULT_BUYER_USER_ID=buyer-lena
 
 不必须。
 
-如果不配置 `AI_API_KEY`，项目会使用内置 deterministic seller assistant，方便开发者立即跑通。需要真实模型输出时，可以配置任意 OpenAI-compatible provider。
+如果不配置 `AI_API_KEY`，项目会使用内置 deterministic order assistant，方便开发者立即跑通。需要真实模型输出时，可以配置任意 OpenAI-compatible provider。

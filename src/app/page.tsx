@@ -1,5 +1,5 @@
-import { EcommerceSellerChatApp } from "@/components/ecommerce-seller-chat-app";
+import { EcommerceOrderChatApp } from "@/components/ecommerce-order-chat-app";
 
 export default function Home() {
-  return <EcommerceSellerChatApp />;
+  return <EcommerceOrderChatApp />;
 }

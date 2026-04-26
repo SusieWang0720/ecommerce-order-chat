@@ -2,11 +2,11 @@
 
 ## Repository Name
 
-`ecommerce-seller-chat`
+`ecommerce-order-chat`
 
 ## About
 
-Full-stack ecommerce app built with Tencent RTC Chat SDK for product chat, order threads, seller ops, and Stripe-ready checkout.
+Full-stack ecommerce app built with Tencent RTC Chat SDK for product chat, persistent order threads, seller replies, and Stripe-ready checkout.
 
 ## Website
 
@@ -16,14 +16,13 @@ Full-stack ecommerce app built with Tencent RTC Chat SDK for product chat, order
 
 ```text
 ecommerce
-seller-chat
+order-chat
 marketplace
 stripe
 chat-sdk
 tencent-rtc
 nextjs
 typescript
-order-chat
 full-stack
 ```
 
@@ -31,7 +30,7 @@ full-stack
 
 Primary:
 
-- `ecommerce seller chat`
+- `ecommerce order chat`
 - `nextjs ecommerce app`
 - `marketplace chat nextjs`
 - `stripe ecommerce nextjs`
@@ -40,7 +39,7 @@ Secondary:
 
 - `product chat ecommerce`
 - `order chat app`
-- `buyer seller chat`
+- `buyer order chat`
 - `full stack ecommerce nextjs`
 
 ## Positioning Guardrail

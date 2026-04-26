@@ -1,13 +1,13 @@
 import type { EcommerceWorkspace } from "./types";
 
-export const ecommerceSellerChatDemo: EcommerceWorkspace = {
+export const ecommerceOrderChatDemo: EcommerceWorkspace = {
   storeId: "store-harbor-thread",
   storeName: "Harbor Thread Market",
-  category: "Ecommerce seller chat",
+  category: "Ecommerce buyer-seller threads",
   sellerName: "Mira Santos",
-  coverTagline: "Boutique home-goods storefront with seller chat before and after purchase.",
+  coverTagline: "Boutique home-goods storefront with product questions and order threads before and after purchase.",
   heroPitch:
-    "A full-stack ecommerce app with buyer sign-up, product catalog, seller chat, checkout path, order threads, and seller ops powered by Tencent RTC Chat SDK.",
+    "A full-stack ecommerce app with buyer sign-up, product catalog, product chat, Stripe-ready checkout, and post-purchase order threads powered by Tencent RTC Chat SDK.",
   nextShipment: "3 paid orders scheduled for tonight's dispatch window",
   gmv: 18420,
   users: [
@@ -164,13 +164,13 @@ export const ecommerceSellerChatDemo: EcommerceWorkspace = {
       paymentProvider: "mock",
       paymentStatus: "pending",
       amount: 86,
-      note: "Waiting for checkout confirmation.",
+      note: "Waiting for payment confirmation in the active order thread.",
     },
   ],
   sellerChecklist: [
-    "Review buyer questions before checkout",
+    "Review buyer questions before purchase",
     "Confirm payment path: mock or Stripe",
-    "Keep post-purchase shipping updates in the same order thread",
-    "Watch inventory and payment exceptions from seller ops",
+    "Keep shipping and support updates in the same order thread",
+    "Watch inventory and payment exceptions from the ops dashboard",
   ],
 };

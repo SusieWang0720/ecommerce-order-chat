@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     amount,
     confirmation: paid
       ? `${buyerName} completed Stripe payment for ${productTitle}. Keep shipping and support updates in the same order thread.`
-      : `${buyerName} started a mock checkout for ${productTitle}. The order thread stays open while payment is pending.`,
+      : `${buyerName} started a mock payment flow for ${productTitle}. The order thread stays open while payment is pending.`,
   };
 
   return NextResponse.json(response);

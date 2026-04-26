@@ -1,8 +1,8 @@
 {
-  "name": "ecommerce-seller-chat",
+  "name": "ecommerce-order-chat",
   "version": "0.1.0",
   "private": true,
-  "description": "A full-stack ecommerce app built with Tencent RTC Chat SDK for product chat, order threads, seller ops, and Stripe-ready checkout.",
+  "description": "A full-stack ecommerce app built with Tencent RTC Chat SDK for product chat, persistent order threads, seller replies, and Stripe-ready checkout.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
