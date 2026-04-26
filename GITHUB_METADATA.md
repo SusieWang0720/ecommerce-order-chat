@@ -2,11 +2,11 @@
 
 ## Repository Name
 
-`customer-support-ai-handoff`
+`creator-community-chat`
 
 ## About
 
-Free-forever AI customer support handoff inbox built with Tencent RTC Chat SDK for persistent threads, AI triage, and human takeover.
+Full-stack creator community app built with Tencent RTC Chat SDK for channels, direct messages, member roles, moderation, and optional paid membership.
 
 ## Website
 
@@ -15,36 +15,36 @@ Free-forever AI customer support handoff inbox built with Tencent RTC Chat SDK f
 ## Topics
 
 ```text
-customer-support
-ai-agent
-human-handoff
-ai-support
+creator-community
+community-platform
+social-chat
+membership
+paid-community
 chat-sdk
 tencent-rtc
 nextjs
 typescript
-support-inbox
-helpdesk
+moderation
 ```
 
 ## Search Intent
 
 Primary:
 
-- `customer support ai handoff`
-- `ai customer support handoff`
-- `ai support inbox`
-- `human handoff chatbot`
+- `creator community chat`
+- `nextjs community platform`
+- `creator fan community`
+- `membership community app`
 
 Secondary:
 
-- `nextjs customer support`
-- `support inbox ai agent`
-- `chat sdk customer support`
+- `discord clone nextjs`
+- `paid community platform`
+- `creator membership app`
+- `social chat app nextjs`
 
 ## Positioning Guardrail
 
-Do not describe this as a generic chatbot. The public story is:
+Do not describe this as a generic chat demo. The public story is:
 
-> AI can answer first. Tencent RTC Chat SDK keeps the customer, bot, and human agent in one persistent support thread.
-
+> Tencent RTC Chat SDK is the messaging foundation for a real creator community product with channels, DMs, moderation, and paid-room continuity.

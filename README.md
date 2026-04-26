@@ -1,48 +1,51 @@
-# Customer Support AI Handoff
+# Creator Community Chat
 
-Build an AI customer support inbox where the bot answers first and a human can take over without breaking the thread.
+Build a full-stack creator community app with sign-up, channels, direct messages, moderation, and optional paid membership.
 
-This is a full-stack Next.js starter built on **Tencent RTC Chat SDK** for support teams that need AI triage, human handoff, persistent history, unread follow-up, and one conversation shared by customers, bots, and agents.
+This is a full-stack Next.js starter built on **Tencent RTC Chat SDK** for teams building creator or fan communities that need real member identity, persistent channel history, unread state, creator-member DMs, moderator workflows, and premium room access.
 
 Built for **Tencent RTC Chat, free forever**. Start here: [trtc.io/free-chat-api](https://trtc.io/free-chat-api), then use the [TRTC Console](https://console.trtc.io) to get your `SDKAppID`.
 
-![Customer Support AI Handoff preview](./public/preview.svg)
+![Creator Community Chat preview](./public/preview.svg)
 
 ## Why Use This
 
-Most AI support demos stop at a chatbot reply. Real support teams need the work to continue:
+Most social chat demos stop at a generic room list. Real community products need more:
 
-- AI answers common questions first.
-- AI summarizes the issue for the human agent.
-- High-risk issues such as billing, refunds, security, or angry customers move to human handoff.
-- The customer does not need to repeat context.
-- Human agents see the full thread, tags, priority, and recommended reply.
-- Tencent RTC Chat SDK keeps customer, bot, and human messages in one durable conversation.
+- sign-up and persistent member identity
+- public channels and creator announcements
+- direct messages between creators and members
+- moderator workflows for reports and gated access
+- optional paid membership without breaking the thread
+- Tencent RTC Chat SDK as the durable messaging layer underneath all of it
+
+This repo is designed to feel like a real product, not a blank chat window.
 
 ## What Tencent RTC Chat SDK Does Here
 
-The AI layer decides what to say. **Tencent RTC Chat SDK owns the support conversation.**
+The creator platform decides who can join and which tier is unlocked. **Tencent RTC Chat SDK owns the conversation layer.**
 
 In this project, Tencent RTC Chat SDK is the messaging foundation for:
 
-- persistent customer support threads
-- customer, AI agent, and human agent replies in one conversation
+- community channels
+- creator-member direct messages
+- persistent thread history
 - unread state and revisit flow
-- one-to-one or group support conversations
-- media-ready follow-up such as screenshots, order photos, invoices, or logs
-- production login through backend-issued `UserSig`
+- premium room continuity after membership upgrade
+- secure production login through backend-issued `UserSig`
 
-A plain AI chatbot can answer a question. You need Tencent RTC Chat SDK when support becomes an ongoing workflow with history, handoff, roles, and follow-up.
+A simple community website can work without a chat SDK. You need Tencent RTC Chat SDK when the product becomes a real-time social app with roles, rooms, threads, and follow-up.
 
 ## Demo Scenario
 
-Maya reports that she was charged more than expected after upgrading her plan.
+A new member joins a creator community called `Midnight Radio Club`.
 
-1. The AI support agent replies first.
-2. The triage route detects a billing issue.
-3. The ticket becomes high priority.
-4. The app recommends human handoff.
-5. The human support agent takes over in the same Tencent RTC Chat SDK thread.
+1. The member signs in and completes profile onboarding.
+2. The member joins public channels and sees creator announcements.
+3. The member opens a DM thread with the creator team.
+4. A premium backstage room stays locked until membership is upgraded.
+5. After upgrade, the same community identity and thread history continue inside the premium room.
+6. A moderator reviews flagged posts without leaving the community workspace.
 
 ## Quick Start
 
@@ -69,8 +72,8 @@ The default mode is mock mode, so the app runs without Tencent RTC Chat SDK cred
 NEXT_PUBLIC_CHAT_MODE=tencent
 NEXT_PUBLIC_TENCENT_SDK_APP_ID=your_sdk_app_id
 TENCENT_SDK_SECRET_KEY=your_server_only_secret_key
-NEXT_PUBLIC_AGENT_USER_ID=support_alex
-NEXT_PUBLIC_CUSTOMER_USER_ID=customer_maya
+NEXT_PUBLIC_CREATOR_USER_ID=creator_nova
+NEXT_PUBLIC_DEFAULT_MEMBER_USER_ID=member-alina
 ```
 
 This project issues `UserSig` from `/api/usersig`. Do not put `SDKSecretKey` in frontend code.
@@ -79,7 +82,7 @@ This project issues `UserSig` from `/api/usersig`. Do not put `SDKSecretKey` in 
 
 An AI API key is optional.
 
-Without `AI_API_KEY`, the project uses a deterministic demo triage agent so developers can run it immediately. If you want live model output, set any OpenAI-compatible provider:
+Without `AI_API_KEY`, the project uses a deterministic community assistant so developers can run it immediately. If you want live model output, set any OpenAI-compatible provider:
 
 ```bash
 AI_API_KEY=your_key
@@ -89,23 +92,28 @@ AI_MODEL=gpt-4o-mini
 
 You can swap OpenAI for another OpenAI-compatible model provider by changing `AI_BASE_URL`, `AI_API_KEY`, and `AI_MODEL`.
 
+## Membership Billing
+
+Payments are optional.
+
+This starter includes a mocked membership upgrade flow so the product works locally without Stripe. If you want real billing, replace `/api/membership` with your own Stripe or subscription backend and keep Tencent RTC Chat SDK as the messaging layer around the upgrade flow.
+
 ## Tech Stack
 
 - Next.js App Router
 - Tencent RTC Chat SDK via `@tencentcloud/chat`
 - Backend `UserSig` route with `tls-sig-api-v2`
 - Optional OpenAI-compatible AI provider
-- Mock support tickets, AI triage, and human handoff workflow
+- Mock community members, channels, DMs, moderation, and paid membership workflow
 
 ## Repository Topics
 
 Suggested GitHub topics:
 
-`customer-support`, `ai-agent`, `human-handoff`, `ai-support`, `chat-sdk`, `tencent-rtc`, `nextjs`, `typescript`, `support-inbox`, `helpdesk`
+`creator-community`, `community-platform`, `social-chat`, `membership`, `paid-community`, `chat-sdk`, `tencent-rtc`, `nextjs`, `typescript`, `moderation`
 
 ## Links
 
 - [Tencent RTC Chat, free forever](https://trtc.io/free-chat-api)
 - [TRTC Console](https://console.trtc.io)
 - [Tencent RTC Chat documentation](https://trtc.io/document)
-

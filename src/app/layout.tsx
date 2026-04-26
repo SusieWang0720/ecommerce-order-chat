@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Customer Support AI Handoff",
+  title: "Creator Community Chat",
   description:
-    "A free-forever AI customer support handoff inbox built with Tencent RTC Chat SDK.",
+    "A full-stack creator community app built with Tencent RTC Chat SDK for channels, direct messages, moderation, and optional paid membership.",
 };
 
 export default function RootLayout({

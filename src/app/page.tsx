@@ -1,5 +1,5 @@
-import { SupportHandoffApp } from "@/components/support-handoff-app";
+import { CreatorCommunityChatApp } from "@/components/creator-community-chat-app";
 
 export default function Home() {
-  return <SupportHandoffApp />;
+  return <CreatorCommunityChatApp />;
 }
