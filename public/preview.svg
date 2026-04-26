@@ -1,0 +1,23 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" rx="42" fill="#F3F0E8"/>
+  <circle cx="150" cy="84" r="250" fill="#D8F57C" fill-opacity="0.44"/>
+  <circle cx="1130" cy="64" r="305" fill="#2057FF" fill-opacity="0.18"/>
+  <rect x="62" y="58" width="1156" height="604" rx="38" fill="#FFFDF3" fill-opacity="0.86" stroke="#172026" stroke-opacity="0.12"/>
+  <text x="104" y="130" fill="#2057FF" font-family="Avenir Next, Arial" font-size="24" font-weight="800">Tencent RTC Chat, free forever</text>
+  <text x="104" y="216" fill="#172026" font-family="Georgia, serif" font-size="72" font-weight="700">AI support that hands off</text>
+  <text x="104" y="292" fill="#172026" font-family="Georgia, serif" font-size="72" font-weight="700">without losing the thread.</text>
+  <text x="108" y="354" fill="#65727A" font-family="Avenir Next, Arial" font-size="24">Persistent support threads for AI triage, human takeover, history, and unread state.</text>
+  <rect x="104" y="420" width="268" height="82" rx="28" fill="#172026"/>
+  <text x="139" y="471" fill="#FFF9E8" font-family="Avenir Next, Arial" font-size="23" font-weight="800">Connect Chat SDK</text>
+  <rect x="722" y="126" width="400" height="466" rx="34" fill="#FFF9EA" stroke="#172026" stroke-opacity="0.12"/>
+  <rect x="754" y="164" width="336" height="70" rx="22" fill="#C9DDFF" fill-opacity="0.56"/>
+  <text x="778" y="207" fill="#172026" font-family="Avenir Next, Arial" font-size="20" font-weight="800">Maya Chen · Human handoff</text>
+  <rect x="754" y="263" width="292" height="82" rx="22" fill="#FFF8E8"/>
+  <text x="778" y="297" fill="#65727A" font-family="Avenir Next, Arial" font-size="18">Invoice is higher than</text>
+  <text x="778" y="323" fill="#65727A" font-family="Avenir Next, Arial" font-size="18">quoted after upgrade.</text>
+  <rect x="802" y="374" width="288" height="84" rx="22" fill="#E9F8B8"/>
+  <text x="826" y="408" fill="#65727A" font-family="Avenir Next, Arial" font-size="18">AI summarized. Human</text>
+  <text x="826" y="434" fill="#65727A" font-family="Avenir Next, Arial" font-size="18">takes over in same thread.</text>
+  <rect x="754" y="498" width="228" height="48" rx="24" fill="#E44C6D" fill-opacity="0.14"/>
+  <text x="778" y="529" fill="#B42B4A" font-family="Avenir Next, Arial" font-size="16" font-weight="800">Persistent Chat SDK thread</text>
+</svg>
